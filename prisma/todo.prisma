@@ -1,5 +1,6 @@
 generator client {
-  provider = "prisma-client-js"
+  provider        = "prisma-client-js"
+  output          = "../prisma/generated/todo"
   previewFeatures = ["multiSchema"]
 }
 
@@ -13,7 +14,7 @@ model Todo {
   title       String
   description String
   isDone      Boolean  @default(false)
-  targetDate  DateTime @default(dbgenerated("now() + interval '1 day'"))
+  targetDate  DateTime @default(dbgenerated("(now() + '1 day'::interval)"))
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 }

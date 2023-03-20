@@ -13,6 +13,8 @@
 		"migrate:backup": "npx prisma migrate dev --schema ./prisma/todoBackup.prisma",
 		"dbpush:todo": "npx prisma db push --schema ./prisma/todo.prisma",
 		"dbpush:backup": "npx prisma db push --schema ./prisma/todoBackup.prisma",
+		"dbpull:todo": "npx prisma db pull --schema ./prisma/todo.prisma",
+		"dbpull:backup": "npx prisma db pull --schema ./prisma/todoBackup.prisma",
 		"studio:todo": "npx prisma studio --schema ./prisma/todo.prisma",
 		"studio:backup": "npx prisma studio --schema ./prisma/todoBackup.prisma"
 	},

@@ -1,8 +1,6 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
-  provider = "prisma-client-js"
+  provider        = "prisma-client-js"
+  output          = "../prisma/generated/todoBackup"
   previewFeatures = ["multiSchema"]
 }
 
@@ -11,14 +9,12 @@ datasource todoBackupDb {
   url      = env("TODO_LIST_BACKUP_DATABASE_URL")
 }
 
-
-model Todo {
+model TodoBackup {
   id          String   @id @default(cuid())
   title       String
   description String
   isDone      Boolean  @default(false)
-  targetDate  DateTime @default(dbgenerated("now() + interval '1 day'"))
+  targetDate  DateTime @default(dbgenerated("(now() + '1 day'::interval)"))
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 }
-

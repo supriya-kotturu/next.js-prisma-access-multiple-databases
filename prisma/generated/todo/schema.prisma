@@ -1,0 +1,20 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../prisma/generated/todo"
+  previewFeatures = ["multiSchema"]
+}
+
+datasource todoDb {
+  provider = "postgresql"
+  url      = env("TODO_LIST_DATABASE_URL")
+}
+
+model Todo {
+  id          String   @id @default(cuid())
+  title       String
+  description String
+  isDone      Boolean  @default(false)
+  targetDate  DateTime @default(dbgenerated("now() + interval '1 day'"))
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
